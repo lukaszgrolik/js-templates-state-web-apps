@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 1;
+}
+
+html {
+    font-family: "Lato";
+}
+
+.articles-block {
+    background-color: #ccd;
+    padding: 2em;
+    margin: 0 auto;
+    max-width: 1024px;
+}
+
+.articles-block > div + div {
+    margin-top: 2em;
+}
+
+.articles-block-heading {
+    padding-bottom: 1em;
+    border-bottom: 1px solid rgba(255, 255, 255, .33);
+}
+
+.articles-block h1 {
+    color: rgba(0, 0, 0, .66);
+    font-family: "Source Serif Pro";
+    font-size: 4em;
+    font-weight: bold;
+}
+
+.articles-list {
+    list-style: none;
+}
+
+.articles-list > li + li {
+    margin-top: 1em;
+}
+
+/* * *
+
+article-block
+
+* * */
+
+.article-block {
+    display: flex;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .2);
+}
+
+.article-thumbnail-block {
+
+}
+
+.article-thumbnail-block img {
+    max-height: 300px;
+    display: block;
+}
+
+.article-block > div + div {
+    /* margin-left: 1em; */
+}
+
+.article-content-block {
+    background-color: #fff;
+    padding: 2em;
+}
+
+.article-content-block > div + div {
+    margin-top: 1em;
+}
+
+.article-header {
+    
+}
+
+.article-header > div + div {
+    margin-top: 1em;
+}
+
+.article-heading-block {
+    
+}
+
+.article-heading {
+    color: #333;
+    font-family: "Source Serif Pro";
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.article-date-block {
+    color: #777;
+    font-size: .8em;
+}
+
+.article-body {
+    color: #555;
+}
+
+.article-body p {
+    font-size: 1.2em;
+    line-height: 1.4;
+}
+
+.article-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-left: -.5em;
+    margin-top: -.5em;
+}
+
+.article-tags-list > li {
+    margin-left: .5em;
+    margin-top: .5em;
+}
+
+/* * *
+
+article-tag-block
+
+* * */
+
+.article-tag-block {
+    background-color: #ddd;
+    color: #555;
+    font-size: .8em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: .33em .5em;
+}
