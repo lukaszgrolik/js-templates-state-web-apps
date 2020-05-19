@@ -52,6 +52,10 @@ article-block
     box-shadow: 3px 3px 3px rgba(0, 0, 0, .2);
 }
 
+.article-block:hover {
+    cursor: pointer;
+}
+
 .article-thumbnail-block {
 
 }
@@ -91,6 +95,12 @@ article-block
     font-family: "Source Serif Pro";
     font-size: 2em;
     font-weight: bold;
+    border-bottom: 5px solid #eef;
+    transition: border-color .2s;
+}
+
+.article-block:hover .article-heading {
+    border-color: #ccd;
 }
 
 .article-date-block {

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo-app | 1-handlebars</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <!-- <script src="script.js"></script> -->
+</head>
+<body>
+    
+    <div class="tasks-block">
+        <div class="tasks-block-heading">
+            <h1>To-do list</h1>
+        </div>
+
+        <div class="tasks-filter-panel">
+            <div>filter</div>
+            <div>sort</div>
+        </div>
+        
+        <div>
+            <ul class="tasks-list"></ul>
+        </div>
+    </div>
+
+    <script id="task-template" type="text/x-handlebars-template">
+        <div class="task-block">
+            <div class="task-done-control-block">
+                <input type="checkbox" checked="{{isDone}}">
+            </div>
+
+            <div class="task-name-block">{{name}}</div>
+            
+            <div class="task-order-control-block">
+                <div><button>up</button></div>
+                <div><button>down</button></div>
+            </div>
+            
+            <div class="task-delete-control-block">
+                <button>del</button>
+            </div>
+        </div>
+    </script>
+
+    <script id="tag-template" type="text/x-handlebars-template">
+        <div class="tag-block">{{tagName}}</div>
+    </script>
+
+    <script>
+        function appendTasksHtml(tasksData) {
+            const taskTemplateHtml = document.getElementById('task-template').innerHTML;
+            const taskTemplate = Handlebars.compile(taskTemplateHtml);
+
+            const tagTemplateHtml = document.getElementById('tag-template').innerHTML;
+            Handlebars.registerPartial('tagBlock', tagTemplateHtml);
+
+            const tasksList = document.querySelector('.tasks-list');
+
+            tasksData.forEach(task => {
+                const tasksListItem = document.createElement('li');
+                const taskBlockHtml = taskTemplate(task);
+                const taskBlock = createElementFromHTML('div', taskBlockHtml);
+                tasksListItem.appendChild(taskBlock);
+
+                tasksList.appendChild(tasksListItem);
+            });
+        }
+
+        // based on https://stackoverflow.com/a/494348
+        function createElementFromHTML(elemString, htmlString) {
+            var div = document.createElement(elemString);
+            div.innerHTML = htmlString.trim();
+
+            // Change this to div.childNodes to support multiple top-level nodes
+            return div.firstChild; 
+        }
+        
+        const tasks = [
+            {
+                name: "Buy milk",
+                isDone: false,
+                order: 0,
+            },
+            {
+                name: "Ipsum",
+                isDone: false,
+                order: 1,
+            },
+            {
+                name: "Dolor",
+                isDone: true,
+                order: 2,
+            },
+            {
+                name: "Sit",
+                isDone: false,
+                order: 3,
+            },
+        ];
+        
+        appendTasksHtml(tasks);
+    </script>
+</body>
+</html>

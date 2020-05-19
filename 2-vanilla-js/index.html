@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
 
+    <script src="../articles-data.js"></script>
     <script src="script.js"></script>
 </head>
 <body>
@@ -35,50 +36,7 @@
             });
         }
         
-        const articles = [
-            {
-                title: "Lorem ipsum dolor sit amet",
-                date: "2020-05-12",
-                content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                thumbnail: "../assets/flaming-5140842_640.jpg",
-                thumbnailInfo: "Flamingos",
-                tags: ["Lorem ipsum", "Dolor"]
-            },
-            {
-                title: "aaa",
-                date: "2020-05-12",
-                content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                thumbnail: "../assets/coffee-5149246_640.jpg",
-                thumbnailInfo: "Flamingos",
-                tags: ["Lorem ipsum", "Dolor"]
-            },
-            {
-                title: "aaa",
-                date: "2020-05-12",
-                content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                thumbnail: "../assets/bench-5177709_640.jpg",
-                thumbnailInfo: "Flamingos",
-                tags: ["Lorem ipsum", "Dolor"]
-            },
-            {
-                title: "aaa",
-                date: "2020-05-12",
-                content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                thumbnail: "../assets/lotus-5143420_640.jpg",
-                thumbnailInfo: "Flamingos",
-                tags: ["Lorem ipsum", "Dolor"]
-            },
-            {
-                title: "aaa",
-                date: "2020-05-12",
-                content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                thumbnail: "../assets/snail-5170660_640.jpg",
-                thumbnailInfo: "Flamingos",
-                tags: ["Lorem ipsum", "Dolor"]
-            },
-        ];
-        
-        appendArticlesHtml(articles);
+        appendArticlesHtml(window.ARTICLES);
     </script>
 </body>
 </html>

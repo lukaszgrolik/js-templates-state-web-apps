@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-handlebars</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="../articles-data.js"></script>
+</head>
+<body>
+    
+    <div class="articles-block">
+        <div class="articles-block-heading">
+            <h1>Articles</h1>
+        </div>
+        
+        <div>
+            <ul class="articles-list"></ul>
+        </div>
+    </div>
+
+    <script id="article-template" type="text/x-handlebars-template">
+        <div class="article-block">
+            <div class="article-thumbnail-block">
+                <img src="{{thumbnail}}" alt="{{thumbnailInfo}}">
+            </div>
+
+            <div class="article-content-block">
+                <div class="article-header">
+                    <div class="article-heading-block"><h2 class="article-heading">{{title}}</h2></div>
+                    <div class="article-date-block">{{date}}</div>
+                </div>
+
+                <div class="article-body">
+                    <p>{{content}}</p>
+                </div>
+                
+                <div class="article-footer">
+                    <ul class="article-tags-list">
+                        {{#each tags as |tagName|}}
+                            <li>
+                                {{> tagBlock tagName=tagName}}
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="tag-template" type="text/x-handlebars-template">
+        <div class="article-tag-block">{{tagName}}</div>
+    </script>
+
+    <script>
+        function appendArticlesHtml(articlesData) {
+            const articleTemplateHtml = document.getElementById('article-template').innerHTML;
+            const articleTemplate = Handlebars.compile(articleTemplateHtml);
+
+            const tagTemplateHtml = document.getElementById('tag-template').innerHTML;
+            Handlebars.registerPartial('tagBlock', tagTemplateHtml);
+
+            const articlesList = document.querySelector('.articles-list');
+
+            articlesData.forEach(art => {
+                const articlesListItem = document.createElement('li');
+                const articleBlockHtml = articleTemplate(art);
+                const articleBlock = createElementFromHTML('div', articleBlockHtml);
+                articlesListItem.appendChild(articleBlock);
+
+                articlesList.appendChild(articlesListItem);
+            });
+        }
+
+        // based on https://stackoverflow.com/a/494348
+        function createElementFromHTML(elemString, htmlString) {
+            var div = document.createElement(elemString);
+            div.innerHTML = htmlString.trim();
+
+            // Change this to div.childNodes to support multiple top-level nodes
+            return div.firstChild; 
+        }
+        
+        appendArticlesHtml(window.ARTICLES);
+    </script>
+</body>
+</html>
