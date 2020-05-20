@@ -4,35 +4,62 @@ import {observer} from 'mobx-react';
 import styled from '@emotion/styled';
 
 import {Store} from './store/store';
-import {TaskBlock} from './task-block';
+import {TaskBlock} from './components/task-block/task-block';
 import {TasksFilterPanel} from './tasks-filter-panel';
 
 const Wrapper = styled.div`
-	background-color: #ccd;
-    padding: 2em;
+	background-color: #dcb;
     margin: 0 auto;
     max-width: 720px;
-
-    > div + div {
-        margin-top: 2em;
-    }
 `;
 const Heading = styled.div`
-	padding-bottom: 1em;
-    border-bottom: 1px solid rgba(255, 255, 255, .33);
+    background-color: #333;
+    padding: 2em;
+    padding-top: 3em;
 
     h1 {
-        color: rgba(0, 0, 0, .66);
+        color: rgba(255, 255, 255, .85);
         font-family: "Source Serif Pro";
         font-size: 4em;
         font-weight: bold;
+    }
+`;
+const TasksHeader = styled.div`
+    background-color: rgba(255, 255, 255, .25);
+    padding: 2em;
+    padding-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+const NewTaskFormBlock = styled.div`
+
+`;
+const NewTaskForm = styled.form`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > div + div {
+        margin-left: .5em;
+    }
+
+    input {
+        max-width: 150px;
+    }
+`;
+const TasksContentBlock = styled.div`
+    padding: 2em;
+
+    > div + div {
+        margin-top: 1em;
     }
 `;
 const TasksList = styled.ul`
 	list-style: none;
 
     > li + li {
-        border-top: 1px solid #ddd;
+        margin-top: 1px;
     }
 `;
 
@@ -50,58 +77,70 @@ export class MainView extends React.Component<Props> {
         return (
             <Wrapper>
                 <Heading>
-                    <h1>To-do list</h1>
+                    <h1>My to-do list</h1>
                 </Heading>
 
-                <div>
-                    <div>
-                        <form onSubmit={e => {
+                <TasksHeader>
+                    <NewTaskFormBlock>
+                        <NewTaskForm onSubmit={e => {
                             e.preventDefault();
 
                             store.createTask({name: this.newTaskName});
 
                             this.newTaskName = '';
                         }}>
-                            <input
-                                type="text"
-                                placeholder="New task name..."
-                                value={this.newTaskName}
-                                onChange={e => {
-                                    this.newTaskName = e.currentTarget.value;
-                                }}
-                            />
+                            <div>
+                                <input
+                                    type="text"
+                                    placeholder="New task name..."
+                                    value={this.newTaskName}
+                                    onChange={e => {
+                                        this.newTaskName = e.currentTarget.value;
+                                    }}
+                                />
+                            </div>
 
-                            <button>Add</button>
-                        </form>
-                    </div>
+                            <div>
+                                <button disabled={this.newTaskName == ''}>Add</button>
+                            </div>
+                        </NewTaskForm>
+                    </NewTaskFormBlock>
 
                     <div>
                         <TasksFilterPanel store={store} />
                     </div>
-                </div>
+                </TasksHeader>
 
                 <div>
-                    {
-                        store.tasks.length == 0
-                        ?
-                        <p>No tasks found. Use the form above to add a new task.</p>
-                        :
+                    <TasksContentBlock>
                         <div>
-                            <div>Showing {store.tasksFilter.tasks.length} tasks ({store.tasks.length} total)</div>
-
-                            <TasksList>
-                                {
-                                    store.tasksFilter.tasks.map(task => {
-                                        return (
-                                            <li key={task.id}>
-                                                <TaskBlock store={store} task={task} />
-                                            </li>
-                                        );
-                                    })
-                                }
-                            </TasksList>
+                            {
+                                store.tasks.length == 0
+                                ?
+                                <p>No tasks found. Use the form above to add a new task.</p>
+                                :
+                                <p>Showing {store.tasksFilter.tasks.length} tasks ({store.tasks.length} total)</p>
+                            }
                         </div>
-                    }
+
+                        {
+                            store.tasks.length > 0
+                            &&
+                            <div>
+                                <TasksList>
+                                    {
+                                        store.tasksFilter.tasks.map(task => {
+                                            return (
+                                                <li key={task.id}>
+                                                    <TaskBlock store={store} task={task} />
+                                                </li>
+                                            );
+                                        })
+                                    }
+                                </TasksList>
+                            </div>
+                        }
+                    </TasksContentBlock>
                 </div>
             </Wrapper>
         );

@@ -6,7 +6,17 @@ import { computed } from 'mobx';
 import {Store, TaskStatusFilter} from './store/store';
 
 const Wrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    > div + div {
+        margin-left: 1em;
+    }
+
+    input {
+        max-width: 150px;
+    }
 `;
 
 interface Props {
