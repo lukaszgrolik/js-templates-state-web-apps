@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 1;
+}
+
+html {
+    font-family: "Lato";
+}
+
+.tasks-block {
+    background-color: #dcb;
+    margin: 0 auto;
+    max-width: 720px;
+}
+
+.tasks-block-heading {
+    background-color: #333;
+    padding: 2em;
+    padding-top: 3em;
+}
+
+.tasks-block-heading h1 {
+    color: rgba(255, 255, 255, .85);
+    font-family: "Source Serif Pro";
+    font-size: 4em;
+    font-weight: bold;
+}
+
+.tasks-header {
+    background-color: rgba(255, 255, 255, .25);
+    padding: 2em;
+    padding-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-task-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-task-form > div + div {
+    margin-left: .5em;
+}
+
+.new-task-form input {
+    max-width: 150px;
+}
+
+.tasks-filter-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tasks-filter-panel > div + div {
+    margin-left: 1em;
+}
+
+.tasks-filter-panel input {
+    max-width: 150px;
+}
+
+.tasks-content-block {
+    padding: 2em;
+}
+
+.tasks-content-block > div + div {
+    margin-top: 1em;
+}
+
+.tasks-list {
+    list-style: none;
+}
+
+.tasks-list > li + li {
+    border-top: 1px solid #ddd;
+}

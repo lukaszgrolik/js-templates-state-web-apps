@@ -6,25 +6,60 @@
 	<title>todo-app | 1-handlebars</title>
 
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="task-block.css">
 
 	<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-	<!-- <script src="script.js"></script> -->
 </head>
 <body>
 
 	<div class="tasks-block">
 		<div class="tasks-block-heading">
-			<h1>To-do list</h1>
+			<h1>My to-do list</h1>
 		</div>
 
-		<div class="tasks-filter-panel">
-			<div>filter</div>
-			<div>sort</div>
+		<div class="tasks-header">
+			<div>
+				<form class="new-task-form">
+					<div>
+						<input
+							type="text"
+							placeholder="New task name..."
+						>
+					</div>
+
+					<div>
+						<button>Add</button>
+					</div>
+				</form>
+			</div>
+
+			<div>
+				<div class="tasks-filter-panel">
+					<div>
+						<button>status</button>
+					</div>
+
+					<div>
+						<input
+							type="text"
+							placeholder="Filter by task name..."
+						>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div>
-			<ul class="tasks-list"></ul>
+			<div class="tasks-content-block">
+				<div>
+					<p>...tasks counter...</p>
+				</div>
+
+				<div>
+					<ul class="tasks-list"></ul>
+				</div>
+			</TasksContentBlock>
 		</div>
 	</div>
 
@@ -51,35 +86,9 @@
 		<div class="tag-block">{{tagName}}</div>
 	</script>
 
+	<script src="script.js"></script>
+
 	<script>
-		function appendTasksHtml(tasksData) {
-			const taskTemplateHtml = document.getElementById('task-template').innerHTML;
-			const taskTemplate = Handlebars.compile(taskTemplateHtml);
-
-			const tagTemplateHtml = document.getElementById('tag-template').innerHTML;
-			Handlebars.registerPartial('tagBlock', tagTemplateHtml);
-
-			const tasksList = document.querySelector('.tasks-list');
-
-			tasksData.forEach(task => {
-				const tasksListItem = document.createElement('li');
-				const taskBlockHtml = taskTemplate(task);
-				const taskBlock = createElementFromHTML('div', taskBlockHtml);
-				tasksListItem.appendChild(taskBlock);
-
-				tasksList.appendChild(tasksListItem);
-			});
-		}
-
-		// based on https://stackoverflow.com/a/494348
-		function createElementFromHTML(elemString, htmlString) {
-			var div = document.createElement(elemString);
-			div.innerHTML = htmlString.trim();
-
-			// Change this to div.childNodes to support multiple top-level nodes
-			return div.firstChild;
-		}
-
 		const tasks = [
 			{
 				name: "Buy milk",
@@ -103,7 +112,7 @@
 			},
 		];
 
-		appendTasksHtml(tasks);
+		init(tasks);
 	</script>
 </body>
 </html>
