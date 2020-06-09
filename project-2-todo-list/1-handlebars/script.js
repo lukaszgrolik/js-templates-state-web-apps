@@ -1,8 +1,11 @@
 const taskTemplateHtml = document.getElementById('task-template').innerHTML;
 const taskTemplate = Handlebars.compile(taskTemplateHtml);
 
-const tagTemplateHtml = document.getElementById('tag-template').innerHTML;
-Handlebars.registerPartial('tagBlock', tagTemplateHtml);
+const taskNameFormTemplateHtml = document.getElementById('task-name-form-template').innerHTML;
+const taskNameFormTemplate = Handlebars.compile(taskNameFormTemplateHtml);
+
+// const tagTemplateHtml = document.getElementById('tag-template').innerHTML;
+// Handlebars.registerPartial('tagBlock', tagTemplateHtml);
 Handlebars.registerHelper('isChecked', function (checked) {
     return checked ? 'checked' : '';
 });
@@ -14,6 +17,9 @@ const tasksList = document.querySelector('.tasks-list');
 
 function init(tasksData) {
     appendTasksHtml(tasksData);
+
+    // set default values & states
+    validateNewTaskForm();
 
     // init texts
     updateFilterPanelStatusControlText();
@@ -37,11 +43,11 @@ function appendTaskHtml(taskData) {
 
 // based on https://stackoverflow.com/a/494348
 function createElementFromHTML(elemString, htmlString) {
-    const div = document.createElement(elemString);
-    div.innerHTML = htmlString.trim();
+    const wrapper = document.createElement(elemString);
+    wrapper.innerHTML = htmlString.trim();
 
     // Change this to div.childNodes to support multiple top-level nodes
-    return div.firstChild;
+    return wrapper.firstChild;
 }
 
 function switchFilterPanelStatus() {
@@ -79,7 +85,6 @@ function getTaskBlocks() {
 
 function updateTasksList() {
     const status = tasksFilterPanelStatusButton.getAttribute('data-status');
-    // const value = e.currentTarget.value;
     const nameFilter = tasksFilterPanelNameInput.value;
 
     getTaskBlocks().all.forEach(taskBlock => {
@@ -100,7 +105,6 @@ function updateTasksList() {
 
     // hide tasks list if filtered 0 tasks or no tasks exist
     // here getTaskBlocks() must be called again to get correct elements after filtering
-    console.log(getTaskBlocks());
     if (getTaskBlocks().filtered.length) {
         tasksList.closest('div').style.removeProperty('display');
     }
@@ -134,9 +138,12 @@ newTaskForm.addEventListener('submit', e => {
     updateTasksCounterText();
 });
 
+function validateNewTaskForm() {
+    newTaskFormButton.disabled = newTaskFormInput.value == '';
+}
+
 newTaskFormInput.addEventListener('input', e => {
-    const value = e.currentTarget.value;
-    newTaskFormButton.disabled = value == '';
+    validateNewTaskForm();
 });
 
 tasksFilterPanelStatusButton.addEventListener('click', e => {
@@ -147,16 +154,4 @@ tasksFilterPanelStatusButton.addEventListener('click', e => {
 
 tasksFilterPanelNameInput.addEventListener('input', e => {
     updateTasksList();
-});
-
-// @todo update tasks list on task checked change
-// @todo update tasks list on task name change
-
-document.addEventListener('click', e => {
-    if (e.target.matches('.task-delete-control-block button')) {
-        const taskBlock = e.target.closest('li');
-        taskBlock.remove();
-
-        updateTasksCounterText();
-    }
 });

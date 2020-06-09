@@ -1,0 +1,17 @@
+.task-name-form {
+    display: flex;
+	align-items: center;
+}
+
+.task-name-form > div + div {
+    margin-left: .25em;
+}
+
+.task-name-form-control-buttons-block {
+    display: flex;
+	align-items: center;
+}
+
+.task-name-form-control-buttons-block > div + div {
+    margin-left: .25em;
+}

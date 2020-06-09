@@ -9,25 +9,21 @@ const tasks: TaskResponse[] = [
 		id: 1,
 		name: "Buy milk",
 		isDone: false,
-		// order: 0,
 	},
 	{
 		id: 2,
-		name: "Ipsum",
+		name: "Dentist appointment on Tuesday at 9:00",
 		isDone: false,
-		// order: 1,
 	},
 	{
 		id: 3,
-		name: "Dolor",
+		name: "Pay rent & bills",
 		isDone: true,
-		// order: 2,
 	},
 	{
 		id: 4,
-		name: "Sit",
+		name: "Meeting this weekend",
 		isDone: false,
-		// order: 3,
 	},
 ];
 

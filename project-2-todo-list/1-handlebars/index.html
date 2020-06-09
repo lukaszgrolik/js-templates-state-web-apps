@@ -6,8 +6,10 @@
 	<title>todo-app | 1-handlebars</title>
 
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="task-block.css">
+	<link rel="stylesheet" href="task-name-form.css">
 
 	<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 </head>
@@ -59,7 +61,7 @@
 				<div>
 					<ul class="tasks-list"></ul>
 				</div>
-			</TasksContentBlock>
+			</div>
 		</div>
 	</div>
 
@@ -69,11 +71,10 @@
 				<input type="checkbox" {{isChecked isDone}}>
 			</div>
 
-			<div class="task-name-block">{{name}}</div>
+			<div class="task-name-block">
+				<div class="task-name-text">{{name}}</div>
 
-			<div class="task-order-control-block">
-				<div><button>up</button></div>
-				<div><button>down</button></div>
+				<div class="task-name-form-container"></div>
 			</div>
 
 			<div class="task-delete-control-block">
@@ -82,33 +83,55 @@
 		</div>
 	</script>
 
-	<script id="tag-template" type="text/x-handlebars-template">
-		<div class="tag-block">{{tagName}}</div>
+	<script id="task-name-form-template" type="text/x-handlebars-template">
+		<form class="task-name-form">
+			<div>
+				<input
+					type="text"
+					placeholder="Edit task name..."
+					autoFocus
+					value="{{name}}"
+				/>
+			</div>
+
+			<div class="task-name-form-control-buttons-block">
+				<div>
+					<button type="submit" class="task-name-form-submit">
+						<!-- <i className="fa fa-fw fa-check" aria-hidden="true"></i> -->
+						ok
+					</button>
+				</div>
+
+				<div>
+					<button type="button" class="task-name-form-cancel">
+						<!-- <i className="fa fa-fw fa-close" aria-hidden="true"></i> -->
+						x
+					</button>
+				</div>
+			</div>
+		</form>
 	</script>
 
 	<script src="script.js"></script>
+	<script src="task-block.js"></script>
 
 	<script>
 		const tasks = [
 			{
 				name: "Buy milk",
 				isDone: false,
-				order: 0,
 			},
 			{
-				name: "Ipsum",
+				name: "Dentist appointment on Tuesday at 9:00",
 				isDone: false,
-				order: 1,
 			},
 			{
-				name: "Dolor",
+				name: "Pay rent & bills",
 				isDone: true,
-				order: 2,
 			},
 			{
-				name: "Sit",
+				name: "Meeting this weekend",
 				isDone: false,
-				order: 3,
 			},
 		];
 

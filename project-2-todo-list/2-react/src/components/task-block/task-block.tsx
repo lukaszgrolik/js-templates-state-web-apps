@@ -33,9 +33,6 @@ const NameBlock = styled.div<{isDone: boolean}>`
 		text-decoration: line-through;
 	`};
 `;
-const OrderControlBlock = styled.div`
-	padding: .5em;
-`;
 const DeleteControlBlock = styled.div`
 	padding: .5em;
 
@@ -90,20 +87,6 @@ export class TaskBlock extends React.Component<Props> {
 						</div>
 					}
 				</NameBlock>
-
-				<OrderControlBlock>
-					<div>
-						<button>
-							<i className="fa fa-fw fa-angle-up" aria-hidden="true"></i>
-						</button>
-					</div>
-
-					<div>
-						<button>
-							<i className="fa fa-fw fa-angle-down" aria-hidden="true"></i>
-						</button>
-					</div>
-				</OrderControlBlock>
 
 				<DeleteControlBlock>
 					<button onClick={() => {
