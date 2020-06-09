@@ -37,7 +37,7 @@
 			<div>
 				<div class="tasks-filter-panel">
 					<div>
-						<button>status</button>
+						<button data-status="All">status</button>
 					</div>
 
 					<div>
@@ -66,7 +66,7 @@
 	<script id="task-template" type="text/x-handlebars-template">
 		<div class="task-block">
 			<div class="task-done-control-block">
-				<input type="checkbox" checked="{{isDone}}">
+				<input type="checkbox" {{isChecked isDone}}>
 			</div>
 
 			<div class="task-name-block">{{name}}</div>

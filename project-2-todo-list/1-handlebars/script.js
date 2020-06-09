@@ -3,6 +3,9 @@ const taskTemplate = Handlebars.compile(taskTemplateHtml);
 
 const tagTemplateHtml = document.getElementById('tag-template').innerHTML;
 Handlebars.registerPartial('tagBlock', tagTemplateHtml);
+Handlebars.registerHelper('isChecked', function (checked) {
+    return checked ? 'checked' : '';
+});
 
 const tasksFilterPanelStatusButton = document.querySelector('.tasks-filter-panel button');
 const tasksFilterPanelNameInput = document.querySelector('.tasks-filter-panel input');
@@ -11,6 +14,9 @@ const tasksList = document.querySelector('.tasks-list');
 
 function init(tasksData) {
     appendTasksHtml(tasksData);
+
+    // init texts
+    updateFilterPanelStatusControlText();
     updateTasksCounterText();
 }
 
@@ -31,20 +37,33 @@ function appendTaskHtml(taskData) {
 
 // based on https://stackoverflow.com/a/494348
 function createElementFromHTML(elemString, htmlString) {
-    var div = document.createElement(elemString);
+    const div = document.createElement(elemString);
     div.innerHTML = htmlString.trim();
 
     // Change this to div.childNodes to support multiple top-level nodes
     return div.firstChild;
 }
 
+function switchFilterPanelStatus() {
+    const status = tasksFilterPanelStatusButton.getAttribute('data-status');
+    let newStatus;
+    switch (status) {
+        case "All": newStatus = 'ToDo'; break;
+        case "ToDo": newStatus = 'Done'; break;
+        case "Done": newStatus = 'All'; break;
+    }
+
+    tasksFilterPanelStatusButton.setAttribute('data-status', newStatus);
+}
+
 function updateFilterPanelStatusControlText() {
+    const status = tasksFilterPanelStatusButton.getAttribute('data-status');
     let text;
-    // switch (tasksFilter.status) {
-    //     case TaskStatusFilter.All: text = 'All tasks';
-    //     case TaskStatusFilter.ToDo: text = 'To-do only';
-    //     case TaskStatusFilter.Done: text = 'Done only';
-    // }
+    switch (status) {
+        case "All": text = 'All tasks'; break;
+        case "ToDo": text = 'To-do only'; break;
+        case "Done": text = 'Done only'; break;
+    }
 
     tasksFilterPanelStatusButton.innerText = text;
 }
@@ -56,6 +75,40 @@ function getTaskBlocks() {
         all: taskBlocks,
         filtered: Array.from(taskBlocks).filter(t => t.closest('li').style.display !== 'none'),
     };
+}
+
+function updateTasksList() {
+    const status = tasksFilterPanelStatusButton.getAttribute('data-status');
+    // const value = e.currentTarget.value;
+    const nameFilter = tasksFilterPanelNameInput.value;
+
+    getTaskBlocks().all.forEach(taskBlock => {
+        const isDone = taskBlock.querySelector('input[type="checkbox"]').checked;
+        const taskName = taskBlock.querySelector('.task-name-block').innerText;
+
+        if (
+            (status == 'ToDo' && isDone) ||
+            (status == 'Done' && isDone == false) ||
+            taskName.toLowerCase().includes(nameFilter.toLowerCase()) == false
+        ) {
+            taskBlock.closest('li').style.display = 'none';
+        }
+        else {
+            taskBlock.closest('li').style.removeProperty('display');
+        }
+    });
+
+    // hide tasks list if filtered 0 tasks or no tasks exist
+    // here getTaskBlocks() must be called again to get correct elements after filtering
+    console.log(getTaskBlocks());
+    if (getTaskBlocks().filtered.length) {
+        tasksList.closest('div').style.removeProperty('display');
+    }
+    else {
+        tasksList.closest('div').style.display = 'none';
+    }
+
+    updateTasksCounterText();
 }
 
 function updateTasksCounterText() {
@@ -87,33 +140,17 @@ newTaskFormInput.addEventListener('input', e => {
 });
 
 tasksFilterPanelStatusButton.addEventListener('click', e => {
+    switchFilterPanelStatus();
     updateFilterPanelStatusControlText();
+    updateTasksList();
 });
 
 tasksFilterPanelNameInput.addEventListener('input', e => {
-    const value = e.currentTarget.value;
-
-    getTaskBlocks().all.forEach(taskBlock => {
-        var taskName = taskBlock.querySelector('.task-name-block').innerText;
-
-        if (taskName.toLowerCase().includes(value.toLowerCase()))
-            taskBlock.closest('li').style.removeProperty('display');
-        else
-            taskBlock.closest('li').style.display = 'none';
-    });
-
-    // hide tasks list if filtered 0 tasks or no tasks exist
-    // here getTaskBlocks() must be called again to get correct elements after filtering
-    console.log(getTaskBlocks());
-    if (getTaskBlocks().filtered.length) {
-        tasksList.closest('div').style.removeProperty('display');
-    }
-    else {
-        tasksList.closest('div').style.display = 'none';
-    }
-
-    updateTasksCounterText();
+    updateTasksList();
 });
+
+// @todo update tasks list on task checked change
+// @todo update tasks list on task name change
 
 document.addEventListener('click', e => {
     if (e.target.matches('.task-delete-control-block button')) {
