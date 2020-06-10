@@ -36,6 +36,9 @@ function appendTaskHtml(taskData) {
     const tasksListItem = document.createElement('li');
     const taskBlockHtml = taskTemplate(taskData);
     const taskBlock = createElementFromHTML('div', taskBlockHtml);
+    const taskNameBlock = taskBlock.querySelector('.task-name-block');
+    updateTaskStatus(taskNameBlock, taskData.isDone);
+
     tasksListItem.appendChild(taskBlock);
 
     tasksList.appendChild(tasksListItem);

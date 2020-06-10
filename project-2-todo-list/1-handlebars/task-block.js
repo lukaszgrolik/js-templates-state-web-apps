@@ -1,5 +1,22 @@
 // @todo update tasks list on task checked change
 
+function updateTaskStatus(taskNameBlock, isDone) {
+    const taskDoneClassName = 'is-done';
+    if (isDone)
+        taskNameBlock.classList.add(taskDoneClassName);
+    else
+        taskNameBlock.classList.remove(taskDoneClassName);
+}
+
+document.addEventListener('change', e => {
+    if (e.target.matches('.task-done-control-block input[type="checkbox"]')) {
+        const taskBlock = e.target.closest('.task-block');
+        const taskNameBlock = taskBlock.querySelector('.task-name-block');
+
+        updateTaskStatus(taskNameBlock, e.target.checked);
+    }
+});
+
 document.addEventListener('click', e => {
     if (e.target.matches('.task-name-text')) {
         const taskBlock = e.target.closest('.task-block');
