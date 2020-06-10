@@ -79,7 +79,7 @@ article-block
 }
 
 .article-header {
-    
+
 }
 
 .article-header > div + div {
@@ -87,7 +87,7 @@ article-block
 }
 
 .article-heading-block {
-    
+
 }
 
 .article-heading {
@@ -143,4 +143,27 @@ article-tag-block
     text-transform: uppercase;
     border-radius: 3px;
     padding: .33em .5em;
+}
+
+/* * *
+
+footer
+
+* * */
+
+.articles-footer {
+    text-align: center;
+}
+
+.articles-footer > div + div {
+    margin-top: .5em;
+}
+
+.articles-footer a {
+    color: #55c;
+    text-decoration: none;
+}
+
+.articles-footer a:hover {
+    text-decoration: underline;
 }

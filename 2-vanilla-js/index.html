@@ -12,14 +12,19 @@
     <script src="script.js"></script>
 </head>
 <body>
-    
+
     <div class="articles-block">
         <div class="articles-block-heading">
             <h1>Articles</h1>
         </div>
-        
+
         <div>
             <ul class="articles-list"></ul>
+        </div>
+
+        <div class="articles-footer">
+            <div>Descriptions obtained from <a href="https://en.wikipedia.org">wikipedia</a>.</div>
+            <div>Photos obtained from <a href="https://pixabay.com">pixabay</a>.</div>
         </div>
     </div>
 
@@ -31,11 +36,11 @@
                 const articlesListItem = document.createElement('li');
                 const articleBlock = generateArticleHtml(art);
                 articlesListItem.appendChild(articleBlock);
-                
+
                 articlesList.appendChild(articlesListItem);
             });
         }
-        
+
         appendArticlesHtml(window.ARTICLES);
     </script>
 </body>

@@ -12,14 +12,19 @@
     <script src="../articles-data.js"></script>
 </head>
 <body>
-    
+
     <div class="articles-block">
         <div class="articles-block-heading">
             <h1>Articles</h1>
         </div>
-        
+
         <div>
             <ul class="articles-list"></ul>
+        </div>
+
+        <div class="articles-footer">
+            <div>Descriptions obtained from <a href="https://en.wikipedia.org">wikipedia</a>.</div>
+            <div>Photos obtained from <a href="https://pixabay.com">pixabay</a>.</div>
         </div>
     </div>
 
@@ -38,7 +43,7 @@
                 <div class="article-body">
                     <p>{{content}}</p>
                 </div>
-                
+
                 <div class="article-footer">
                     <ul class="article-tags-list">
                         {{#each tags as |tagName|}}
@@ -82,9 +87,9 @@
             div.innerHTML = htmlString.trim();
 
             // Change this to div.childNodes to support multiple top-level nodes
-            return div.firstChild; 
+            return div.firstChild;
         }
-        
+
         appendArticlesHtml(window.ARTICLES);
     </script>
 </body>
