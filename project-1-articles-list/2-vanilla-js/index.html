@@ -7,9 +7,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-
-    <script src="../articles-data.js"></script>
-    <script src="script.js"></script>
 </head>
 <body>
 
@@ -28,20 +25,7 @@
         </div>
     </div>
 
-    <script>
-        function appendArticlesHtml(articlesData) {
-            const articlesList = document.querySelector('.articles-list');
-
-            articlesData.forEach(art => {
-                const articlesListItem = document.createElement('li');
-                const articleBlock = generateArticleHtml(art);
-                articlesListItem.appendChild(articleBlock);
-
-                articlesList.appendChild(articlesListItem);
-            });
-        }
-
-        appendArticlesHtml(window.ARTICLES);
-    </script>
+    <script src="../articles-data.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,3 +1,19 @@
+appendArticlesHtml(window.ARTICLES);
+
+function appendArticlesHtml(articlesData) {
+    const articlesList = document.querySelector('.articles-list');
+    const articleTemplate = document.getElementById('article-template');
+    const tagTemplate = document.getElementById('tag-template');
+
+    articlesData.forEach(art => {
+        const articlesListItem = document.createElement('li');
+        const articleBlock = generateArticleHtml(articleTemplate, tagTemplate, art);
+        articlesListItem.appendChild(articleBlock);
+
+        articlesList.appendChild(articlesListItem);
+    });
+}
+
 function generateArticleHtml(articleTemplate, tagTemplate, articleData) {
     const articleTemplateContent = articleTemplate.content.cloneNode(true);
     const articleBlock = articleTemplateContent.querySelector('.article-block');
@@ -11,9 +27,9 @@ function generateArticleHtml(articleTemplate, tagTemplate, articleData) {
     articleDateBlock.innerText = articleData.date;
     const articleParagraph = articleBlock.querySelector('.article-body p');
     articleParagraph.innerText = articleData.content;
-    
+
     const tagsList = articleBlock.querySelector('.article-tags-list');
-    
+
     articleData.tags.forEach(tagName => {
         const tagsListItem = document.createElement('li');
         const tagTemplateContent = tagTemplate.content.cloneNode(true);
