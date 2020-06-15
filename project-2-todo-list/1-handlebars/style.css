@@ -10,6 +10,27 @@ html {
     font-family: "Lato";
 }
 
+button {
+    background-color: #fff;
+    border: 1px solid #dcb;
+    border-radius: 5px;
+    padding: .25em .5em;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+button:not(:disabled):hover {
+    background-color: #f7f7f7;
+}
+
+input {
+    border: 1px solid #dcb;
+    border-radius: 5px;
+    padding: .25em .5em;
+}
+
 .tasks-block {
     background-color: #dcb;
     margin: 0 auto;
