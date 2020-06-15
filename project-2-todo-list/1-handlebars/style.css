@@ -38,46 +38,10 @@ html {
     align-items: center;
 }
 
-.new-task-form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.new-task-form > div + div {
-    margin-left: .5em;
-}
-
-.new-task-form input {
-    max-width: 150px;
-}
-
-.tasks-filter-panel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.tasks-filter-panel > div + div {
-    margin-left: 1em;
-}
-
-.tasks-filter-panel input {
-    max-width: 150px;
-}
-
 .tasks-content-block {
     padding: 2em;
 }
 
 .tasks-content-block > div + div {
     margin-top: 1em;
-}
-
-.tasks-list {
-    list-style: none;
-}
-
-.tasks-list > li + li {
-    border-top: 1px solid #ddd;
 }

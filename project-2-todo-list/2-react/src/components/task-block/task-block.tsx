@@ -27,7 +27,6 @@ const IsDoneControlBlock = styled.div`
 `;
 const NameBlock = styled.div<{isDone: boolean}>`
 	padding: .5em;
-	flex-grow: 1;
 	${props => props.isDone && css`
 		color: #777;
 		text-decoration: line-through;
@@ -35,11 +34,6 @@ const NameBlock = styled.div<{isDone: boolean}>`
 `;
 const DeleteControlBlock = styled.div`
 	padding: .5em;
-
-	button {
-		width: 3em;
-		height: 2.5em;
-	}
 `;
 
 interface Props {

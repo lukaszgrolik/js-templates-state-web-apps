@@ -1,0 +1,13 @@
+.tasks-filter-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tasks-filter-panel > div + div {
+    margin-left: 1em;
+}
+
+.tasks-filter-panel input {
+    max-width: 150px;
+}

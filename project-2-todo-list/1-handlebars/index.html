@@ -7,9 +7,13 @@
 
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="task-block.css">
-	<link rel="stylesheet" href="task-name-form.css">
+	<link rel="stylesheet" href="components/new-task-form/new-task-form.css">
+	<link rel="stylesheet" href="components/filters-panel/filters-panel.css">
+	<link rel="stylesheet" href="components/tasks-list/tasks-list.css">
+	<link rel="stylesheet" href="components/task-block/task-block.css">
+	<link rel="stylesheet" href="components/task-block/task-name-form.css">
 
 	<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 </head>
@@ -78,7 +82,9 @@
 			</div>
 
 			<div class="task-delete-control-block">
-				<button>del</button>
+				<button>
+					<i class="fa fa-fw fa-close" aria-hidden="true"></i>
+				</button>
 			</div>
 		</div>
 	</script>
@@ -97,45 +103,19 @@
 			<div class="task-name-form-control-buttons-block">
 				<div>
 					<button type="submit" class="task-name-form-submit">
-						<!-- <i className="fa fa-fw fa-check" aria-hidden="true"></i> -->
-						ok
+						<i class="fa fa-fw fa-check" aria-hidden="true"></i>
 					</button>
 				</div>
 
 				<div>
 					<button type="button" class="task-name-form-cancel">
-						<!-- <i className="fa fa-fw fa-close" aria-hidden="true"></i> -->
-						x
+						<i class="fa fa-fw fa-close" aria-hidden="true"></i>
 					</button>
 				</div>
 			</div>
 		</form>
 	</script>
 
-	<script src="script.js"></script>
-	<script src="task-block.js"></script>
-
-	<script>
-		const tasks = [
-			{
-				name: "Buy milk",
-				isDone: false,
-			},
-			{
-				name: "Dentist appointment on Tuesday at 9:00",
-				isDone: false,
-			},
-			{
-				name: "Pay rent & bills",
-				isDone: true,
-			},
-			{
-				name: "Meeting this weekend",
-				isDone: false,
-			},
-		];
-
-		init(tasks);
-	</script>
+	<script type="module" src="script.js"></script>
 </body>
 </html>
