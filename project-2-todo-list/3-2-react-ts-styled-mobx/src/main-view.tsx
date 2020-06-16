@@ -32,9 +32,6 @@ const TasksHeader = styled.div`
     justify-content: space-between;
     align-items: center;
 `;
-const NewTaskFormBlock = styled.div`
-
-`;
 const NewTaskForm = styled.form`
     display: flex;
     justify-content: space-between;
@@ -81,7 +78,7 @@ export class MainView extends React.Component<Props> {
                 </Heading>
 
                 <TasksHeader>
-                    <NewTaskFormBlock>
+                    <div>
                         <NewTaskForm onSubmit={e => {
                             e.preventDefault();
 
@@ -104,7 +101,7 @@ export class MainView extends React.Component<Props> {
                                 <button disabled={this.newTaskName == ''}>Add</button>
                             </div>
                         </NewTaskForm>
-                    </NewTaskFormBlock>
+                    </div>
 
                     <div>
                         <TasksFilterPanel store={store} />
