@@ -86,7 +86,7 @@ export class TaskBlock extends React.Component<Props> {
 					<button onClick={() => {
 						store.deleteTask(task);
 					}}>
-						<i className="fa fa-fw fa-close" aria-hidden="true"></i>
+						<i className="fa fa-fw fa-trash" aria-hidden="true"></i>
 					</button>
 				</DeleteControlBlock>
 			</Wrapper>

@@ -32,7 +32,7 @@ export class Store {
 
 	@action createTask(task: TaskPayload) {
 		const data = {
-			id: this.tasks.length + 1,
+			id: Date.now(),
 			name: task.name,
 			isDone: false,
 		};

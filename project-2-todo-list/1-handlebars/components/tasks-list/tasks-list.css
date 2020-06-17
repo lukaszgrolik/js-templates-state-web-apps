@@ -1,7 +1,7 @@
 .tasks-list {
-    list-style: none;
+	list-style: none;
 }
 
 .tasks-list > li + li {
-    border-top: 1px solid #ddd;
+	border-top: 1px solid #ddd;
 }

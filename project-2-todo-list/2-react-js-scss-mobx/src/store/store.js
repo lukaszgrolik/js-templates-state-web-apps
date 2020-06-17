@@ -11,14 +11,14 @@ export class Store {
 
 	@observable tasks = [];
 
-	constructor(opts: StoreOpts) {
+	constructor(opts) {
 		const tasks = opts.tasks.map(t => new Task(this, t));
 		this.tasks.push(...tasks)
 	}
 
 	@action createTask(task) {
 		const data = {
-			id: this.tasks.length + 1,
+			id: Date.now(),
 			name: task.name,
 			isDone: false,
 		};

@@ -4,8 +4,6 @@ import * as TasksList from '../tasks-list/tasks-list.js';
 const taskNameFormTemplateHtml = document.getElementById('task-name-form-template').innerHTML;
 const taskNameFormTemplate = Handlebars.compile(taskNameFormTemplateHtml);
 
-// @todo update tasks list on task checked change
-
 export function updateTaskStatus(taskNameBlock, isDone) {
 	const taskDoneClassName = 'is-done';
 	if (isDone)
@@ -14,13 +12,13 @@ export function updateTaskStatus(taskNameBlock, isDone) {
 		taskNameBlock.classList.remove(taskDoneClassName);
 }
 
-// @todo update tasks list on task name change (when new name doesn't pass the filter)
-
 export function attachEventListeners(taskBlock) {
 	taskBlock.querySelector('.task-done-control-block input[type="checkbox"]').addEventListener('change', e => {
 		const taskNameBlock = taskBlock.querySelector('.task-name-block');
 
 		updateTaskStatus(taskNameBlock, e.target.checked);
+
+		TasksList.updateTasksList();
 	});
 
 	taskBlock.querySelector('.task-name-text').addEventListener('click', e => {
@@ -57,6 +55,7 @@ function attachTaskNameFormEventListeners(taskBlock, taskNameForm) {
 		taskNameText.innerText = nameInput.value;
 
 		hideTaskNameForm(taskBlock);
+		TasksList.updateTasksList();
 	});
 
 	taskNameForm.querySelector('.task-name-form-cancel').addEventListener('click', e => {

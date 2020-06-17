@@ -67,7 +67,7 @@ export class Store {
 
 	createTask(task: TaskCreatePayload) {
 		this.data.tasks.push({
-			id: this.data.tasks.length + 1,
+			id: Date.now(),
 			name: task.name,
 			isDone: false,
 		});

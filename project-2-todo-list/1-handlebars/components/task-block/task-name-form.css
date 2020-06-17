@@ -1,17 +1,17 @@
 .task-name-form {
-    display: flex;
+	display: flex;
 	align-items: center;
 }
 
 .task-name-form > div + div {
-    margin-left: .25em;
+	margin-left: .25em;
 }
 
 .task-name-form-control-buttons-block {
-    display: flex;
+	display: flex;
 	align-items: center;
 }
 
 .task-name-form-control-buttons-block > div + div {
-    margin-left: .25em;
+	margin-left: .25em;
 }

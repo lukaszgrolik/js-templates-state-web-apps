@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {observer} from 'mobx-react';
 
 import { Store } from '../../store/store';
 import { TaskBlock } from '../task-block/task-block';
@@ -6,11 +7,8 @@ import { TasksFilterPanel } from '../tasks-filter-panel/tasks-filter-panel';
 
 import './main-view.scss';
 
-interface Props {
-	store: Store;
-}
-
-export class MainView extends React.Component<Props> {
+@observer
+export class MainView extends React.Component {
 	state = {
 		newTaskName: ''
 	};
@@ -68,7 +66,7 @@ export class MainView extends React.Component<Props> {
 						</div>
 
 						{
-							store.tasks.length > 0
+							store.tasksFilter.tasks.length > 0
 							&&
 							<div>
 								<div className="tasks-list">

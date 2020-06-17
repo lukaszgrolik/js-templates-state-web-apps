@@ -5,7 +5,7 @@ const plugins = [
 	new ForkTsCheckerWebpackPlugin(),
 ];
 
-const config = {
+export default {
 	entry: './src/web-app',
 	mode: 'development',
 	output: {
@@ -46,5 +46,3 @@ const config = {
 	},
 	plugins,
 };
-
-export default config;

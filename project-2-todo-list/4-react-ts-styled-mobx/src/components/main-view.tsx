@@ -121,7 +121,7 @@ export class MainView extends React.Component<Props> {
 						</div>
 
 						{
-							store.tasks.length > 0
+							store.tasksFilter.tasks.length > 0
 							&&
 							<div>
 								<TasksList>

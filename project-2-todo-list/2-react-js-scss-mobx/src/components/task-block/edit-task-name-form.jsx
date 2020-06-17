@@ -1,21 +1,17 @@
 import * as React from 'react';
+import { observer } from 'mobx-react';
 
 import { Store, Task } from '../../store/store';
 
 import './edit-task-name-form.scss';
 
-interface Props {
-	store: Store;
-	task: Task;
-	onEditFinished: () => void;
-}
-
-export class EditTaskNameForm extends React.Component<Props> {
+@observer
+export class EditTaskNameForm extends React.Component {
 	state = {
 		taskName: '',
 	};
 
-	constructor(props: Props) {
+	constructor(props) {
 		super(props);
 
 		this.state.taskName = props.task.name;

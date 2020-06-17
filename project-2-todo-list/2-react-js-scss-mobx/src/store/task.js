@@ -3,12 +3,13 @@ import { observable } from 'mobx';
 import { Store } from './store';
 
 export class Task {
-	readonly id;
+	id;
 
 	@observable name = '';
 	@observable isDone = false;
 
-	constructor(readonly store, body) {
+	constructor(store, body) {
+		this.store = store;
 		this.id = body.id;
 		this.name = body.name;
 		this.isDone = body.isDone;

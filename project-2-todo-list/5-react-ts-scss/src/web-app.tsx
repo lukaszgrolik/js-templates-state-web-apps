@@ -4,7 +4,8 @@ import * as ReactDOM from 'react-dom';
 import {Store, StoreData} from './store';
 import {MainView} from './components/main-view';
 
-import './web-app.scss';
+import './reset.scss';
+import './main.scss';
 
 const tasks = [
 	{

@@ -1,5 +1,5 @@
 html {
-	font-family: 'Lato', sans-serif;
+	font-family: "Lato";
 }
 
 button {
@@ -7,14 +7,14 @@ button {
 	border: 1px solid #dcb;
 	border-radius: 5px;
 	padding: .25em .5em;
+}
 
-	&:not(:disabled) {
-		cursor: pointer;
+button:not(:disabled) {
+	cursor: pointer;
+}
 
-		&:hover {
-			background-color: #f7f7f7;
-		}
-	}
+button:not(:disabled):hover {
+	background-color: #f7f7f7;
 }
 
 input {

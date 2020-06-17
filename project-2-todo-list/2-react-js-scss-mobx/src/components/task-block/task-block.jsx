@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { observer } from 'mobx-react';
 
 import { Store, Task } from '../../store/store';
 import { EditTaskNameForm } from './edit-task-name-form';
 
 import './task-block.scss';
 
+@observer
 export class TaskBlock extends React.Component {
 	state = {
 		editTaskName: false,
@@ -51,7 +53,7 @@ export class TaskBlock extends React.Component {
 					<button onClick={() => {
 						store.deleteTask(task);
 					}}>
-						<i className="fa fa-fw fa-close" aria-hidden="true"></i>
+						<i className="fa fa-fw fa-trash" aria-hidden="true"></i>
 					</button>
 				</div>
 			</div>

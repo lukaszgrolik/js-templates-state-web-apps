@@ -2,7 +2,7 @@ import * as React from 'react';
 import { computed } from 'mobx';
 import { observer } from 'mobx-react';
 
-import { Store, TaskStatusFilter } from '../../store/store';
+import { Store } from '../../store/store';
 
 import './tasks-filter-panel.scss';
 
@@ -12,9 +12,9 @@ export class TasksFilterPanel extends React.Component {
 		const { store } = this.props;
 
 		switch (store.tasksFilter.status) {
-			case TaskStatusFilter.All: return 'All tasks';
-			case TaskStatusFilter.ToDo: return 'To-do only';
-			case TaskStatusFilter.Done: return 'Done only';
+			case 'All': return 'All tasks';
+			case 'ToDo': return 'To-do only';
+			case 'Done': return 'Done only';
 		}
 	}
 
