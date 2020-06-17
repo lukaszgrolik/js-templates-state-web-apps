@@ -5,19 +5,19 @@ const newTaskFormInput = newTaskForm.querySelector('input');
 const newTaskFormButton = newTaskForm.querySelector('button');
 
 newTaskForm.addEventListener('submit', e => {
-    e.preventDefault();
+	e.preventDefault();
 
-    TasksList.appendTaskHtml({ name: newTaskFormInput.value });
+	TasksList.appendTaskHtml({ name: newTaskFormInput.value });
 
-    newTaskFormInput.value = '';
+	newTaskFormInput.value = '';
 
-    TasksList.updateTasksCounterText();
+	TasksList.updateTasksCounterText();
 });
 
 export function validateNewTaskForm() {
-    newTaskFormButton.disabled = newTaskFormInput.value == '';
+	newTaskFormButton.disabled = newTaskFormInput.value == '';
 }
 
 newTaskFormInput.addEventListener('input', e => {
-    validateNewTaskForm();
+	validateNewTaskForm();
 });
