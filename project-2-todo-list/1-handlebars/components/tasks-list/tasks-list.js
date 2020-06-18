@@ -15,12 +15,11 @@ export function appendTaskHtml(taskData) {
 	const taskBlockHtml = taskTemplate(taskData);
 	const taskBlock = Utils.createElementFromHTML('div', taskBlockHtml);
 	const taskNameBlock = taskBlock.querySelector('.task-name-block');
-	TaskBlock.updateTaskStatus(taskNameBlock, taskData.isDone);
 
+	TaskBlock.updateTaskStatus(taskNameBlock, taskData.isDone);
 	TaskBlock.attachEventListeners(taskBlock);
 
 	tasksListItem.appendChild(taskBlock);
-
 	tasksList.appendChild(tasksListItem);
 }
 

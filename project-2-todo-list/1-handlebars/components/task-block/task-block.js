@@ -1,5 +1,6 @@
 import * as Utils from '../../utils.js';
 import * as TasksList from '../tasks-list/tasks-list.js';
+import * as TaskNameForm from './task-name-form.js';
 
 const taskNameFormTemplateHtml = document.getElementById('task-name-form-template').innerHTML;
 const taskNameFormTemplate = Handlebars.compile(taskNameFormTemplateHtml);
@@ -27,7 +28,9 @@ export function attachEventListeners(taskBlock) {
 		const taskNameForm = Utils.createElementFromHTML('div', taskNameFormHtml);
 		formContainer.appendChild(taskNameForm);
 
-		attachTaskNameFormEventListeners(taskBlock, taskNameForm);
+		taskNameForm.querySelector('input').focus();
+
+		TaskNameForm.attachEventListeners(taskBlock, taskNameForm);
 
 		e.target.style.display = 'none';
 	});
@@ -36,34 +39,5 @@ export function attachEventListeners(taskBlock) {
 		taskBlock.remove();
 
 		TasksList.updateTasksCounterText();
-	});
-}
-
-function hideTaskNameForm(taskBlock) {
-	const formContainer = taskBlock.querySelector('.task-name-form-container');
-	formContainer.innerHTML = '';
-	const taskNameText = taskBlock.querySelector('.task-name-text');
-	taskNameText.style.display = 'block';
-}
-
-function attachTaskNameFormEventListeners(taskBlock, taskNameForm) {
-	taskNameForm.querySelector('.task-name-form-submit').addEventListener('click', e => {
-		e.preventDefault();
-
-		const taskNameText = taskBlock.querySelector('.task-name-text');
-		const nameInput = taskBlock.querySelector('.task-name-form-container input');
-		taskNameText.innerText = nameInput.value;
-
-		hideTaskNameForm(taskBlock);
-		TasksList.updateTasksList();
-	});
-
-	taskNameForm.querySelector('.task-name-form-cancel').addEventListener('click', e => {
-		hideTaskNameForm(taskBlock);
-	});
-
-	taskNameForm.querySelector('.task-name-form-container input').addEventListener('input', e => {
-		const submitButton = e.target.closest('form').querySelector('button[type="submit"]');
-		submitButton.disabled = e.target.value == '';
 	});
 }
