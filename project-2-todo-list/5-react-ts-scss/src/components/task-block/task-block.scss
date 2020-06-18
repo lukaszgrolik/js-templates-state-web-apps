@@ -1,32 +1,32 @@
 .task-block {
-	background: rgba(255, 255, 255, .5);
-	display: flex;
-	align-items: center;
-	transition: background-color .2s;
+    background: rgba(255, 255, 255, .5);
+    display: flex;
+    align-items: center;
+    transition: background-color .2s;
 
-	&:hover {
-		background-color: rgba(255, 255, 255, .75);
-	}
+    &:hover {
+        background-color: rgba(255, 255, 255, .75);
+    }
 }
 
 .task-done-control-block {
-	padding: .5em;
+    padding: .5em;
 
-	input {
-		width: 2em;
-		height: 2em;
-	}
+    input {
+        width: 2em;
+        height: 2em;
+    }
 }
 
 .task-name-block {
-	padding: .5em;
+    padding: .5em;
 
-	&.is-done {
-		color: #777;
-		text-decoration: line-through;
-	}
+    &.is-done {
+        color: #777;
+        text-decoration: line-through;
+    }
 }
 
 .task-delete-control-block {
-	padding: .5em;
+    padding: .5em;
 }

@@ -7,39 +7,39 @@ export * from './task';
 export * from './tasks-filter';
 
 export interface TaskResponse {
-	id: number;
-	name: string;
-	isDone: boolean;
+    id: number;
+    name: string;
+    isDone: boolean;
 }
 
 export interface TaskPayload {
-	name: string;
+    name: string;
 }
 
 interface StoreOpts {
-	tasks: TaskResponse[];
+    tasks: TaskResponse[];
 }
 
 export class Store {
-	readonly tasksFilter = new TasksFilter(this);
+    readonly tasksFilter = new TasksFilter(this);
 
-	@observable tasks: Task[] = [];
+    @observable tasks: Task[] = [];
 
-	constructor(opts: StoreOpts) {
-		const tasks = opts.tasks.map(t => new Task(this, t));
-		this.tasks.push(...tasks)
-	}
+    constructor(opts: StoreOpts) {
+        const tasks = opts.tasks.map(t => new Task(this, t));
+        this.tasks.push(...tasks)
+    }
 
-	@action createTask(task: TaskPayload) {
-		const data = {
-			id: Date.now(),
-			name: task.name,
-			isDone: false,
-		};
-		this.tasks.push(new Task(this, data));
-	}
+    @action createTask(task: TaskPayload) {
+        const data = {
+            id: Date.now(),
+            name: task.name,
+            isDone: false,
+        };
+        this.tasks.push(new Task(this, data));
+    }
 
-	@action deleteTask(task: Task) {
-		this.tasks.splice(this.tasks.indexOf(task), 1);
-	}
+    @action deleteTask(task: Task) {
+        this.tasks.splice(this.tasks.indexOf(task), 1);
+    }
 }

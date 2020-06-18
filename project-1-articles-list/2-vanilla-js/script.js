@@ -1,82 +1,82 @@
 appendArticlesHtml(window.ARTICLES);
 
 function appendArticlesHtml(articlesData) {
-	const articlesList = document.querySelector('.articles-list');
+    const articlesList = document.querySelector('.articles-list');
 
-	articlesData.forEach(art => {
-		const articlesListItem = document.createElement('li');
-		const articleBlock = generateArticleHtml(art);
-		articlesListItem.appendChild(articleBlock);
+    articlesData.forEach(art => {
+        const articlesListItem = document.createElement('li');
+        const articleBlock = generateArticleHtml(art);
+        articlesListItem.appendChild(articleBlock);
 
-		articlesList.appendChild(articlesListItem);
-	});
+        articlesList.appendChild(articlesListItem);
+    });
 }
 
 function generateArticleHtml(articleData) {
-	const mainBlock = document.createElement('div');
-	mainBlock.className = 'article-block';
+    const mainBlock = document.createElement('div');
+    mainBlock.className = 'article-block';
 
-	const thumbnailBlock = document.createElement('div');
-	mainBlock.appendChild(thumbnailBlock);
-	thumbnailBlock.className = 'article-thumbnail-block';
+    const thumbnailBlock = document.createElement('div');
+    mainBlock.appendChild(thumbnailBlock);
+    thumbnailBlock.className = 'article-thumbnail-block';
 
-	const thumbnailImg = document.createElement('img');
-	thumbnailBlock.appendChild(thumbnailImg);
-	thumbnailImg.src = articleData.thumbnail;
-	thumbnailImg.alt = articleData.thumbnailInfo;
+    const thumbnailImg = document.createElement('img');
+    thumbnailBlock.appendChild(thumbnailImg);
+    thumbnailImg.src = articleData.thumbnail;
+    thumbnailImg.alt = articleData.thumbnailInfo;
 
-	const articleContentBlock = document.createElement('div');
-	mainBlock.appendChild(articleContentBlock);
-	articleContentBlock.className = 'article-content-block';
+    const articleContentBlock = document.createElement('div');
+    mainBlock.appendChild(articleContentBlock);
+    articleContentBlock.className = 'article-content-block';
 
-	const articleHeader = document.createElement('div');
-	articleContentBlock.appendChild(articleHeader);
-	articleHeader.className = 'article-header';
+    const articleHeader = document.createElement('div');
+    articleContentBlock.appendChild(articleHeader);
+    articleHeader.className = 'article-header';
 
-	const articleHeadingBlock = document.createElement('div');
-	articleHeader.appendChild(articleHeadingBlock);
-	articleHeadingBlock.className = 'article-heading-block';
+    const articleHeadingBlock = document.createElement('div');
+    articleHeader.appendChild(articleHeadingBlock);
+    articleHeadingBlock.className = 'article-heading-block';
 
-	const articleHeading = document.createElement('h2');
-	articleHeadingBlock.appendChild(articleHeading)
-	articleHeading.className = 'article-heading';
-	articleHeading.innerText = articleData.title;
+    const articleHeading = document.createElement('h2');
+    articleHeadingBlock.appendChild(articleHeading)
+    articleHeading.className = 'article-heading';
+    articleHeading.innerText = articleData.title;
 
-	const articleDateBlock = document.createElement('div');
-	articleHeader.appendChild(articleDateBlock)
-	articleDateBlock.className = 'article-date-block';
-	articleDateBlock.innerText = articleData.date;
+    const articleDateBlock = document.createElement('div');
+    articleHeader.appendChild(articleDateBlock)
+    articleDateBlock.className = 'article-date-block';
+    articleDateBlock.innerText = articleData.date;
 
-	const articleBody = document.createElement('div');
-	articleContentBlock.appendChild(articleBody);
-	articleBody.className = 'article-body';
+    const articleBody = document.createElement('div');
+    articleContentBlock.appendChild(articleBody);
+    articleBody.className = 'article-body';
 
-	const articleParagraph = document.createElement('p');
-	articleBody.appendChild(articleParagraph);
-	articleParagraph.innerText = articleData.content;
+    const articleParagraph = document.createElement('p');
+    articleBody.appendChild(articleParagraph);
+    articleParagraph.innerText = articleData.content;
 
-	const articleFooter = document.createElement('div');
-	articleContentBlock.appendChild(articleFooter);
+    const articleFooter = document.createElement('div');
+    articleContentBlock.appendChild(articleFooter);
 
-	const articleTagsList = document.createElement('ul');
-	articleFooter.appendChild(articleTagsList);
-	articleTagsList.className = 'article-tags-list';
+    const articleTagsList = document.createElement('ul');
+    articleFooter.appendChild(articleTagsList);
+    articleTagsList.className = 'article-tags-list';
 
-	articleData.tags.forEach(tagName => {
-		const articleTagListItem = document.createElement('li');
-		const articleTagBlock = generateArticleTagHtml(tagName);
-		articleTagListItem.appendChild(articleTagBlock);
+    articleData.tags.forEach(tagName => {
+        const articleTagListItem = document.createElement('li');
+        const articleTagBlock = generateArticleTagHtml(tagName);
+        articleTagListItem.appendChild(articleTagBlock);
 
-		articleTagsList.appendChild(articleTagListItem);
-	});
+        articleTagsList.appendChild(articleTagListItem);
+    });
 
-	return mainBlock;
+    return mainBlock;
 }
 
 function generateArticleTagHtml(tagName) {
-	const mainBlock = document.createElement('div');
-	mainBlock.className = 'article-tag-block';
-	mainBlock.innerText = tagName;
+    const mainBlock = document.createElement('div');
+    mainBlock.className = 'article-tag-block';
+    mainBlock.innerText = tagName;
 
-	return mainBlock;
+    return mainBlock;
 }

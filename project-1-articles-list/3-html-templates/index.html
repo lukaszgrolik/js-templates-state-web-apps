@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>articles-list/3-html-templates</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>articles-list/3-html-templates</title>
 
-	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
-	<div class="articles-block">
-		<div class="articles-block-heading">
-			<h1>Articles</h1>
-		</div>
+    <div class="articles-block">
+        <div class="articles-block-heading">
+            <h1>Articles</h1>
+        </div>
 
-		<div>
-			<ul class="articles-list"></ul>
-		</div>
+        <div>
+            <ul class="articles-list"></ul>
+        </div>
 
-		<div class="articles-footer">
-			<div>Descriptions obtained from <a href="https://en.wikipedia.org">wikipedia</a>.</div>
-			<div>Photos obtained from <a href="https://pixabay.com">pixabay</a>.</div>
-		</div>
-	</div>
+        <div class="articles-footer">
+            <div>Descriptions obtained from <a href="https://en.wikipedia.org">wikipedia</a>.</div>
+            <div>Photos obtained from <a href="https://pixabay.com">pixabay</a>.</div>
+        </div>
+    </div>
 
-	<template id="article-template">
-		<div class="article-block">
-			<div class="article-thumbnail-block">
-				<img src="...thumbnail link..." alt="...thumbnail info...">
-			</div>
+    <template id="article-template">
+        <div class="article-block">
+            <div class="article-thumbnail-block">
+                <img src="...thumbnail link..." alt="...thumbnail info...">
+            </div>
 
-			<div class="article-content-block">
-				<div class="article-header">
-					<div class="article-heading-block"><h2 class="article-heading">...heading...</h2></div>
-					<div class="article-date-block">...date...</div>
-				</div>
+            <div class="article-content-block">
+                <div class="article-header">
+                    <div class="article-heading-block"><h2 class="article-heading">...heading...</h2></div>
+                    <div class="article-date-block">...date...</div>
+                </div>
 
-				<div class="article-body">
-					<p>...content...</p>
-				</div>
+                <div class="article-body">
+                    <p>...content...</p>
+                </div>
 
-				<div class="article-footer">
-					<ul class="article-tags-list"></ul>
-				</div>
-			</div>
-		</div>
-	</template>
+                <div class="article-footer">
+                    <ul class="article-tags-list"></ul>
+                </div>
+            </div>
+        </div>
+    </template>
 
-	<template id="tag-template">
-		<div class="article-tag-block">...tag name...</div>
-	</template>
+    <template id="tag-template">
+        <div class="article-tag-block">...tag name...</div>
+    </template>
 
-	<script src="../articles-data.js"></script>
-	<script src="script.js"></script>
+    <script src="../articles-data.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

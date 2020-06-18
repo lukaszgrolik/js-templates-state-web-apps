@@ -8,38 +8,38 @@ import './tasks-filter-panel.scss';
 
 @observer
 export class TasksFilterPanel extends React.Component {
-	@computed get statusLabel() {
-		const { store } = this.props;
+    @computed get statusLabel() {
+        const { store } = this.props;
 
-		switch (store.tasksFilter.status) {
-			case 'All': return 'All tasks';
-			case 'ToDo': return 'To-do only';
-			case 'Done': return 'Done only';
-		}
-	}
+        switch (store.tasksFilter.status) {
+            case 'All': return 'All tasks';
+            case 'ToDo': return 'To-do only';
+            case 'Done': return 'Done only';
+        }
+    }
 
-	render() {
-		const { store } = this.props;
+    render() {
+        const { store } = this.props;
 
-		return (
-			<div className="tasks-filter-panel">
-				<div>
-					<button onClick={() => {
-						store.tasksFilter.switchStatus();
-					}}>{this.statusLabel}</button>
-				</div>
+        return (
+            <div className="tasks-filter-panel">
+                <div>
+                    <button onClick={() => {
+                        store.tasksFilter.switchStatus();
+                    }}>{this.statusLabel}</button>
+                </div>
 
-				<div>
-					<input
-						type="text"
-						placeholder="Filter by task name..."
-						value={store.tasksFilter.name}
-						onChange={e => {
-							store.tasksFilter.name = e.currentTarget.value;
-						}}
-					/>
-				</div>
-			</div>
-		);
-	}
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Filter by task name..."
+                        value={store.tasksFilter.name}
+                        onChange={e => {
+                            store.tasksFilter.name = e.currentTarget.value;
+                        }}
+                    />
+                </div>
+            </div>
+        );
+    }
 }

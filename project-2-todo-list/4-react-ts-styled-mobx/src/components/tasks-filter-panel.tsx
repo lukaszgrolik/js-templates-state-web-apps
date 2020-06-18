@@ -6,59 +6,59 @@ import { computed } from 'mobx';
 import {Store, TaskStatusFilter} from '../store/store';
 
 const Wrapper = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-	> div + div {
-		margin-left: 1em;
-	}
+    > div + div {
+        margin-left: 1em;
+    }
 
-	input {
-		max-width: 150px;
-	}
+    input {
+        max-width: 150px;
+    }
 `;
 
 interface Props {
-	store: Store;
+    store: Store;
 }
 
 @observer
 export class TasksFilterPanel extends React.Component<Props> {
-	@computed private get statusLabel() {
-		const { store } = this.props;
-		const {tasksFilter} = store;
+    @computed private get statusLabel() {
+        const { store } = this.props;
+        const {tasksFilter} = store;
 
-		switch (tasksFilter.status) {
-			case TaskStatusFilter.All: return 'All tasks';
-			case TaskStatusFilter.ToDo: return 'To-do only';
-			case TaskStatusFilter.Done: return 'Done only';
-		}
-	}
+        switch (tasksFilter.status) {
+            case TaskStatusFilter.All: return 'All tasks';
+            case TaskStatusFilter.ToDo: return 'To-do only';
+            case TaskStatusFilter.Done: return 'Done only';
+        }
+    }
 
-	render() {
-		const {store} = this.props;
-		const { tasksFilter } = store;
+    render() {
+        const {store} = this.props;
+        const { tasksFilter } = store;
 
-		return (
-			<Wrapper>
-				<div>
-					<button onClick={() => {
-						tasksFilter.switchStatus();
-					}}>{this.statusLabel}</button>
-				</div>
+        return (
+            <Wrapper>
+                <div>
+                    <button onClick={() => {
+                        tasksFilter.switchStatus();
+                    }}>{this.statusLabel}</button>
+                </div>
 
-				<div>
-					<input
-						type="text"
-						placeholder="Filter by task name..."
-						value={tasksFilter.name}
-						onChange={e => {
-							tasksFilter.name = e.currentTarget.value;
-						}}
-					/>
-				</div>
-			</Wrapper>
-		);
-	}
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Filter by task name..."
+                        value={tasksFilter.name}
+                        onChange={e => {
+                            tasksFilter.name = e.currentTarget.value;
+                        }}
+                    />
+                </div>
+            </Wrapper>
+        );
+    }
 }

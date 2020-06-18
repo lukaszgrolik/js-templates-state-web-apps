@@ -6,38 +6,38 @@ const taskNameFormTemplateHtml = document.getElementById('task-name-form-templat
 const taskNameFormTemplate = Handlebars.compile(taskNameFormTemplateHtml);
 
 export function updateTaskStatus(taskNameBlock, isDone) {
-	const taskDoneClassName = 'is-done';
-	if (isDone)
-		taskNameBlock.classList.add(taskDoneClassName);
-	else
-		taskNameBlock.classList.remove(taskDoneClassName);
+    const taskDoneClassName = 'is-done';
+    if (isDone)
+        taskNameBlock.classList.add(taskDoneClassName);
+    else
+        taskNameBlock.classList.remove(taskDoneClassName);
 }
 
 export function attachEventListeners(taskBlock) {
-	taskBlock.querySelector('.task-done-control-block input[type="checkbox"]').addEventListener('change', e => {
-		const taskNameBlock = taskBlock.querySelector('.task-name-block');
+    taskBlock.querySelector('.task-done-control-block input[type="checkbox"]').addEventListener('change', e => {
+        const taskNameBlock = taskBlock.querySelector('.task-name-block');
 
-		updateTaskStatus(taskNameBlock, e.target.checked);
+        updateTaskStatus(taskNameBlock, e.target.checked);
 
-		TasksList.updateTasksList();
-	});
+        TasksList.updateTasksList();
+    });
 
-	taskBlock.querySelector('.task-name-text').addEventListener('click', e => {
-		const formContainer = taskBlock.querySelector('.task-name-form-container');
-		const taskNameFormHtml = taskNameFormTemplate({ name: e.target.innerText });
-		const taskNameForm = Utils.createElementFromHTML('div', taskNameFormHtml);
-		formContainer.appendChild(taskNameForm);
+    taskBlock.querySelector('.task-name-text').addEventListener('click', e => {
+        const formContainer = taskBlock.querySelector('.task-name-form-container');
+        const taskNameFormHtml = taskNameFormTemplate({ name: e.target.innerText });
+        const taskNameForm = Utils.createElementFromHTML('div', taskNameFormHtml);
+        formContainer.appendChild(taskNameForm);
 
-		taskNameForm.querySelector('input').focus();
+        taskNameForm.querySelector('input').focus();
 
-		TaskNameForm.attachEventListeners(taskBlock, taskNameForm);
+        TaskNameForm.attachEventListeners(taskBlock, taskNameForm);
 
-		e.target.style.display = 'none';
-	});
+        e.target.style.display = 'none';
+    });
 
-	taskBlock.querySelector('.task-delete-control-block button').addEventListener('click', e => {
-		taskBlock.remove();
+    taskBlock.querySelector('.task-delete-control-block button').addEventListener('click', e => {
+        taskBlock.remove();
 
-		TasksList.updateTasksCounterText();
-	});
+        TasksList.updateTasksCounterText();
+    });
 }
