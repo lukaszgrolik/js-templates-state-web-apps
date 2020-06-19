@@ -6,26 +6,7 @@ Handlebars.registerHelper('isChecked', function (checked) {
     return checked ? 'checked' : '';
 });
 
-const tasks = [
-    {
-        name: "Buy milk",
-        isDone: false,
-    },
-    {
-        name: "Dentist appointment on Tuesday at 9:00",
-        isDone: false,
-    },
-    {
-        name: "Pay rent & bills",
-        isDone: true,
-    },
-    {
-        name: "Meeting this weekend",
-        isDone: false,
-    },
-];
-
-init(tasks);
+init(window.TASKS);
 
 function init(tasksData) {
     appendTasksHtml(tasksData);

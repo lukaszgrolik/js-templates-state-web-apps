@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {observer} from 'mobx-react';
+import { observable } from 'mobx';
 
 import { Store } from '../../store/store';
 import { TaskBlock } from '../task-block/task-block';
@@ -9,9 +10,7 @@ import './main-view.scss';
 
 @observer
 export class MainView extends React.Component {
-    state = {
-        newTaskName: ''
-    };
+    @observable newTaskName = '';
 
     render() {
         const { store } = this.props;
@@ -27,23 +26,23 @@ export class MainView extends React.Component {
                         <form className="new-task-form" onSubmit={e => {
                             e.preventDefault();
 
-                            store.createTask({ name: this.state.newTaskName });
+                            store.createTask({ name: this.newTaskName });
 
-                            this.setState({newTaskName: ''});
+                            this.newTaskName = '';
                         }}>
                             <div>
                                 <input
                                     type="text"
                                     placeholder="New task name..."
-                                    value={this.state.newTaskName}
+                                    value={this.newTaskName}
                                     onChange={e => {
-                                        this.setState({newTaskName: e.currentTarget.value});
+                                        this.newTaskName = e.currentTarget.value;
                                     }}
                                 />
                             </div>
 
                             <div>
-                                <button disabled={this.state.newTaskName == ''}>Add</button>
+                                <button disabled={this.newTaskName == ''}>Add</button>
                             </div>
                         </form>
                     </div>

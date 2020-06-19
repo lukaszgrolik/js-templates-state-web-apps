@@ -1,39 +1,19 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import {Store} from './store/store';
+import {Store, TaskResponse} from './store/store';
 import {MainView} from './components/main-view/main-view';
 
 import './reset.scss';
 import './main.scss';
 
-const tasks = [
-    {
-        id: 1,
-        name: "Buy milk",
-        isDone: false,
-    },
-    {
-        id: 2,
-        name: "Dentist appointment on Tuesday at 9:00",
-        isDone: false,
-    },
-    {
-        id: 3,
-        name: "Pay rent & bills",
-        isDone: true,
-    },
-    {
-        id: 4,
-        name: "Meeting this weekend",
-        isDone: false,
-    },
-];
+declare global {
+    interface Window {
+        TASKS: TaskResponse[];
+    }
+}
 
-const store = new Store({
-    tasks,
-});
-
+const store = new Store({tasks: window.TASKS});
 const app = (
     <MainView store={store} />
 );

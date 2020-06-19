@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { observer } from 'mobx-react';
+import { observable } from 'mobx';
 
 import { Store, Task } from '../../store/store';
 import { EditTaskNameForm } from './edit-task-name-form';
@@ -10,10 +12,9 @@ interface Props {
     task: Task;
 }
 
+@observer
 export class TaskBlock extends React.Component<Props> {
-    state = {
-        editTaskName: false,
-    };
+    @observable editTaskName = false;
 
     render() {
         const { store, task } = this.props;
@@ -32,10 +33,10 @@ export class TaskBlock extends React.Component<Props> {
 
                 <div className={`task-name-block${task.isDone ? ' is-done' : ''}`}>
                     {
-                        this.state.editTaskName == false
+                        this.editTaskName == false
                             ?
                             <div onClick={() => {
-                                this.setState({editTaskName: true});
+                                this.editTaskName = true;
                             }}>
                                 {task.name}
                             </div>
@@ -45,7 +46,7 @@ export class TaskBlock extends React.Component<Props> {
                                     store={store}
                                     task={task}
                                     onEditFinished={() => {
-                                        this.setState({editTaskName: false});
+                                        this.editTaskName = false;
                                     }}
                                 />
                             </div>

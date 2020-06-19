@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
 
 import { Store, Task } from '../../store/store';
 
@@ -10,15 +12,14 @@ interface Props {
     onEditFinished: () => void;
 }
 
+@observer
 export class EditTaskNameForm extends React.Component<Props> {
-    state = {
-        taskName: '',
-    };
+    @observable taskName = '';
 
     constructor(props: Props) {
         super(props);
 
-        this.state.taskName = props.task.name;
+        this.taskName = props.task.name;
     }
 
     render() {
@@ -28,7 +29,7 @@ export class EditTaskNameForm extends React.Component<Props> {
             <form className="task-name-form" onSubmit={e => {
                 e.preventDefault();
 
-                task.name = this.state.taskName;
+                task.name = this.taskName;
 
                 onEditFinished();
             }}>
@@ -37,7 +38,7 @@ export class EditTaskNameForm extends React.Component<Props> {
                         type="text"
                         placeholder="Edit task name..."
                         autoFocus
-                        value={this.state.taskName}
+                        value={this.taskName}
                         onChange={e => {
                             this.setState({taskName: e.currentTarget.value});
                         }}
@@ -46,7 +47,7 @@ export class EditTaskNameForm extends React.Component<Props> {
 
                 <div className="task-name-form-control-buttons-block">
                     <div>
-                        <button type="submit" disabled={this.state.taskName == ''}>
+                        <button type="submit" disabled={this.taskName == ''}>
                             <i className="fa fa-fw fa-check" aria-hidden="true"></i>
                         </button>
                     </div>

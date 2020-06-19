@@ -13,13 +13,6 @@ export default {
         path: path.resolve(path.join(__dirname, 'web')),
     },
     devtool: 'source-map',
-    devServer: {
-        host: '0.0.0.0',
-        port: 3025,
-        historyApiFallback: true,
-        disableHostCheck: true,
-        contentBase: path.join(__dirname, 'web'),
-    },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.scss'],
         modules: ['node_modules'],

@@ -6,32 +6,13 @@ import {MainView} from './components/main-view';
 import { Store, TaskResponse } from './store/store';
 import * as styles from './styles';
 
-const tasks: TaskResponse[] = [
-    {
-        id: 1,
-        name: "Buy milk",
-        isDone: false,
-    },
-    {
-        id: 2,
-        name: "Dentist appointment on Tuesday at 9:00",
-        isDone: false,
-    },
-    {
-        id: 3,
-        name: "Pay rent & bills",
-        isDone: true,
-    },
-    {
-        id: 4,
-        name: "Meeting this weekend",
-        isDone: false,
-    },
-];
+declare global {
+    interface Window {
+        TASKS: TaskResponse[];
+    }
+}
 
-const store = new Store({
-    tasks,
-});
+const store = new Store({tasks: window.TASKS});
 const app = (
     <>
         <Global styles={css`${styles.reset}${styles.main}`} />
