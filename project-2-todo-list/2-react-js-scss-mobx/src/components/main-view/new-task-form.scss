@@ -1,0 +1,13 @@
+.new-task-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > div + div {
+        margin-left: .5em;
+    }
+
+    input {
+        max-width: 150px;
+    }
+}

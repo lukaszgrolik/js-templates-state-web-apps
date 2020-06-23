@@ -25,33 +25,3 @@
     justify-content: space-between;
     align-items: center;
 }
-
-.new-task-form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    > div + div {
-        margin-left: .5em;
-    }
-
-    input {
-        max-width: 150px;
-    }
-}
-
-.tasks-content-block {
-    padding: 2em;
-
-    > div + div {
-        margin-top: 1em;
-    }
-}
-
-.tasks-list {
-    list-style: none;
-
-    > li + li {
-        border-top: 1px solid #ddd;
-    }
-}

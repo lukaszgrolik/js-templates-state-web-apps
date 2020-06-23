@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Global, css } from '@emotion/core';
 
-import {MainView} from './components/main-view';
+import {MainView} from './components/main-view/main-view';
 import { Store, TaskResponse } from './store/store';
 import * as styles from './styles';
 

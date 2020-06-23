@@ -1,17 +1,14 @@
 import * as React from 'react';
 import {observer} from 'mobx-react';
-import { observable } from 'mobx';
 
-import { Store } from '../../store/store';
-import { TaskBlock } from '../task-block/task-block';
+import { NewTaskForm } from './new-task-form';
 import { TasksFilterPanel } from '../tasks-filter-panel/tasks-filter-panel';
+import { TasksContentBlock } from './tasks-content-block';
 
 import './main-view.scss';
 
 @observer
 export class MainView extends React.Component {
-    @observable newTaskName = '';
-
     render() {
         const { store } = this.props;
 
@@ -23,28 +20,7 @@ export class MainView extends React.Component {
 
                 <div className="tasks-header">
                     <div>
-                        <form className="new-task-form" onSubmit={e => {
-                            e.preventDefault();
-
-                            store.createTask({ name: this.newTaskName });
-
-                            this.newTaskName = '';
-                        }}>
-                            <div>
-                                <input
-                                    type="text"
-                                    placeholder="New task name..."
-                                    value={this.newTaskName}
-                                    onChange={e => {
-                                        this.newTaskName = e.currentTarget.value;
-                                    }}
-                                />
-                            </div>
-
-                            <div>
-                                <button disabled={this.newTaskName == ''}>Add</button>
-                            </div>
-                        </form>
+                        <NewTaskForm store={store} />
                     </div>
 
                     <div>
@@ -53,35 +29,7 @@ export class MainView extends React.Component {
                 </div>
 
                 <div>
-                    <div className="tasks-content-block">
-                        <div>
-                            {
-                                store.tasks.length == 0
-                                    ?
-                                    <p>No tasks found. Use the form above to add a new task.</p>
-                                    :
-                                    <p>Showing {store.tasksFilter.tasks.length} tasks ({store.tasks.length} total)</p>
-                            }
-                        </div>
-
-                        {
-                            store.tasksFilter.tasks.length > 0
-                            &&
-                            <div>
-                                <div className="tasks-list">
-                                    {
-                                        store.tasksFilter.tasks.map(task => {
-                                            return (
-                                                <li key={task.id}>
-                                                    <TaskBlock store={store} task={task} />
-                                                </li>
-                                            );
-                                        })
-                                    }
-                                </div>
-                            </div>
-                        }
-                    </div>
+                    <TasksContentBlock store={store} />
                 </div>
             </div>
         );

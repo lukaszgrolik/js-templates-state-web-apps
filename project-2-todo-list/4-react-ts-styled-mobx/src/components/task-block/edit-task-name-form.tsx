@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import { Store, Task } from '../../store/store';

@@ -1,0 +1,15 @@
+.tasks-content-block {
+    padding: 2em;
+
+    > div + div {
+        margin-top: 1em;
+    }
+}
+
+.tasks-list {
+    list-style: none;
+
+    > li + li {
+        border-top: 1px solid #ddd;
+    }
+}

@@ -3,8 +3,6 @@ import { observable } from 'mobx';
 import { Store } from './store';
 
 export class Task {
-    id;
-
     @observable name = '';
     @observable isDone = false;
 
