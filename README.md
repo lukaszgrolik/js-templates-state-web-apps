@@ -14,4 +14,4 @@
     1. in the console - `cd` to example folder and `npm run build`
     2. in the browser - click on the folder name, then click on the `web` folder
 
-![](./tech stack.png)
+![](./tech-stack.png)
