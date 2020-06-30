@@ -40,7 +40,7 @@ export class EditTaskNameForm extends React.Component<Props> {
                         autoFocus
                         value={this.taskName}
                         onChange={e => {
-                            this.setState({taskName: e.currentTarget.value});
+                            this.taskName = e.currentTarget.value;
                         }}
                     />
                 </div>

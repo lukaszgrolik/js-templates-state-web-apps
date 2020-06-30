@@ -23,7 +23,7 @@ export class NewTaskForm extends React.Component<Props> {
 
                 store.createTask({ name: this.newTaskName });
 
-                this.setState({ newTaskName: '' });
+                this.newTaskName = '';
             }}>
                 <div>
                     <input
@@ -31,7 +31,7 @@ export class NewTaskForm extends React.Component<Props> {
                         placeholder="New task name..."
                         value={this.newTaskName}
                         onChange={e => {
-                            this.setState({ newTaskName: e.currentTarget.value });
+                            this.newTaskName = e.currentTarget.value;
                         }}
                     />
                 </div>
