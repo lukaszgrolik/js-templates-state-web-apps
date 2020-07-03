@@ -1,7 +1,7 @@
 # Templates and state in JavaScript
 
 - [Part 1: Dynamic content creation and templates](https://www.youtube.com/watch?v=VAzB-Okhp7g)
-- Part 2: State management and modern front-end stack (video to be released)
+- [Part 2: State management and modern front-end stack](https://www.youtube.com/watch?v=VU6uO5veNVU)
 
 ![](./preview.png)
 
